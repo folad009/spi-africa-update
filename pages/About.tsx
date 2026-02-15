@@ -99,7 +99,7 @@ const About: React.FC = () => {
               <h3 className="text-spi-secondary font-bold uppercase tracking-wider mb-2">The Future</h3>
               <h2 className="text-4xl font-bold text-spi-primary mb-6">Unlocking Africa's Potential</h2>
               <p className="text-lg text-slate-600 mb-6 leading-relaxed">
-                Professional sales is a highly skilled, consultative, and data-driven discipline. With Africa’s youthful population, we have a unique opportunity to transform the continent’s economic landscape.
+                Professional sales is a highly skilled, consultative, and data-driven discipline. With Africa's youthful population, we have a unique opportunity to transform the continent’s economic landscape.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
                 By equipping brilliant minds with world-class capabilities, we turn selling into a catalyst for enterprise growth, innovation, and sustainable development across the region.
