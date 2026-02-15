@@ -512,7 +512,7 @@ const Home: React.FC = () => {
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-black/10 rounded-full -ml-32 -mb-32"></div>
 
             <h2 className="text-3xl md:text-5xl font-bold mb-8 relative z-10">
-              Ready to redefine your sales career.
+              Ready to redefine your sales career?
             </h2>
             <p className="text-xl text-blue-100 mb-12 max-w-2xl mx-auto relative z-10">
               Join thousands of professionals across Africa who are setting new
