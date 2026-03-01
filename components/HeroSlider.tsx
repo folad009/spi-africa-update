@@ -20,6 +20,8 @@ const SliderControls: React.FC<Props> = ({ total, current, next, prev, goTo }) =
           <button
             key={i}
             onClick={() => goTo(i)}
+            aria-label={`Go to slide ${i + 1} of ${total}`}
+            aria-current={i === current ? "true" : undefined}
             className={`h-1.5 rounded-full ${
               i === current ? "w-12 bg-spi-gold" : "w-6 bg-white/40"
             }`}
@@ -28,11 +30,37 @@ const SliderControls: React.FC<Props> = ({ total, current, next, prev, goTo }) =
       </div>
 
       <div className="hidden md:flex space-x-4">
-        <button onClick={prev} className="nav-btn">
-            
+        <button
+          onClick={prev}
+          className="nav-btn"
+          aria-label="Previous slide"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+          </svg>
         </button>
-        <button onClick={next} className="nav-btn">
-            
+        <button
+          onClick={next}
+          className="nav-btn"
+          aria-label="Next slide"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-5 w-5 text-white"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
         </button>
       </div>
     </div>
@@ -51,7 +79,9 @@ const HeroSlider: React.FC = () => {
       ".hero-title, .hero-subtitle, .hero-buttons"
     );
 
-    gsap.fromTo(
+    // create timeline so we can kill it in cleanup when `current` changes
+    const tl = gsap.timeline();
+    tl.fromTo(
       elements,
       { opacity: 0, y: 30 },
       {
@@ -62,6 +92,11 @@ const HeroSlider: React.FC = () => {
         ease: "power3.out",
       }
     );
+
+    return () => {
+      tl.kill();
+      gsap.killTweensOf(elements);
+    };
   }, [current]);
 
   return (

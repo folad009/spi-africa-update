@@ -4,13 +4,34 @@ import { Link } from "react-router-dom";
 const Footer: React.FC = () => {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  // when the user submits their email we forward it to a backend endpoint
+  // if you don't yet have an API, the TODO below explains you can keep
+  // the previous behavior for now, but the code is structured so the
+  // success/reset logic only runs after we receive a positive response.
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    setSubscribed(true);
-    setEmail("");
-    setTimeout(() => setSubscribed(false), 4000);
+
+    try {
+      setError(null);
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      if (!res.ok) {
+        throw new Error(`Status ${res.status}`);
+      }
+      // only mark as subscribed after success
+      setSubscribed(true);
+      setEmail("");
+      setTimeout(() => setSubscribed(false), 4000);
+    } catch (err) {
+      console.error('subscription error', err);
+      setError('Unable to subscribe at this time. Please try again later.');
+    }
   };
 
   return (
@@ -76,6 +97,11 @@ const Footer: React.FC = () => {
                 </button>
               </form>
             )}
+            {error && (
+              <div className="text-red-400 text-xs mt-2">
+                {error}
+              </div>
+            )}
           </div>
         </div>
 
@@ -87,11 +113,11 @@ const Footer: React.FC = () => {
               About SPI Africa
             </h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="#">Our Mission & Vision</Link></li>
-              <li><Link to="#">Leadership</Link></li>
-              <li><Link to="#">Strategic Pillars</Link></li>
-              <li><Link to="#">Governance & Transparency</Link></li>
-              <li><Link to="#">Code of Ethics</Link></li>
+              <li><Link to="/about#mission" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Our Mission & Vision</Link></li>
+              <li><Link to="/about#leadership" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Leadership</Link></li>
+              <li><Link to="/about#pillars" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Strategic Pillars</Link></li>
+              <li><Link to="/about#governance" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Governance & Transparency</Link></li>
+              <li><Link to="/about#ethics" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Code of Ethics</Link></li>
             </ul>
           </div>
 
@@ -100,11 +126,11 @@ const Footer: React.FC = () => {
               Membership & Programs
             </h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="#">Join the Community</Link></li>
-              <li><Link to="#">Certification Pathways</Link></li>
-              <li><Link to="#">Training & Development</Link></li>
-              <li><Link to="#">Corporate Partnerships</Link></li>
-              <li><Link to="#">Events & Conferences</Link></li>
+              <li><Link to="/community" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Join the Community</Link></li>
+              <li><Link to="/certification" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Certification Pathways</Link></li>
+              <li><Link to="/training" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Training & Development</Link></li>
+              <li><Link to="/partners" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Corporate Partnerships</Link></li>
+              <li><Link to="/events" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Events & Conferences</Link></li>
             </ul>
           </div>
 
@@ -113,11 +139,11 @@ const Footer: React.FC = () => {
               Resources
             </h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="#">Insights & Publications</Link></li>
-              <li><Link to="#">Research & Industry Reports</Link></li>
-              <li><Link to="#">Blog</Link></li>
-              <li><Link to="#">Media & Press</Link></li>
-              <li><Link to="#">Careers</Link></li>
+              <li><Link to="/insights" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Insights & Publications</Link></li>
+              <li><Link to="/research" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Research & Industry Reports</Link></li>
+              <li><Link to="/blog" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Blog</Link></li>
+              <li><Link to="/press" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Media & Press</Link></li>
+              <li><Link to="/careers" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Careers</Link></li>
             </ul>
           </div>
 
@@ -126,12 +152,12 @@ const Footer: React.FC = () => {
               Legal & Policies
             </h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="#">Privacy Policy</Link></li>
-              <li><Link to="#">Data Protection Policy</Link></li>
-              <li><Link to="#">Terms of Use</Link></li>
-              <li><Link to="#">Cookie Policy</Link></li>
-              <li><Link to="#">Accessibility Statement</Link></li>
-              <li><Link to="#">Sitemap</Link></li>
+              <li><Link to="/privacy" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Privacy Policy</Link></li>
+              <li><Link to="/data-protection" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Data Protection Policy</Link></li>
+              <li><Link to="/terms" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Terms of Use</Link></li>
+              <li><Link to="/cookies" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Cookie Policy</Link></li>
+              <li><Link to="/accessibility" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Accessibility Statement</Link></li>
+              <li><Link to="/sitemap" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Sitemap</Link></li>
             </ul>
           </div>
         </div>

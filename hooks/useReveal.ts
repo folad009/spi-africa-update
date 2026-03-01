@@ -5,10 +5,15 @@ export const useReveal = (ref: React.RefObject<HTMLElement>) => {
   useEffect(() => {
     if (!ref.current) return;
 
-    gsap.fromTo(
+    const anim = gsap.fromTo(
       ref.current,
       { opacity: 0, y: 50 },
       { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
     );
-  }, []);
+
+    return () => {
+      anim.kill();
+      gsap.killTweensOf(ref.current as Element);
+    };
+  }, [ref]);
 };

@@ -24,6 +24,9 @@ const JoinCommunity: React.FC = () => {
     goals: "",
     consent: false,
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -40,9 +43,31 @@ const JoinCommunity: React.FC = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Submitted:", form);
+    if (isSubmitting) return;
+    setErrorMsg(null);
+    setSuccess(false);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/join', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      if (!response.ok) {
+        throw new Error(`Failed to submit (${response.status})`);
+      }
+      setSuccess(true);
+      // clear sensitive fields
+      setForm((prev) => ({ ...prev, email: '', phone: '' }));
+    } catch (err: any) {
+      console.error('submission error', err);
+      setErrorMsg(err?.message || 'Submission failed');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const inputClass =
@@ -64,16 +89,27 @@ const JoinCommunity: React.FC = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            {success && (
+              <div className="text-green-600 font-medium">
+                Thank you! Your submission has been received.
+              </div>
+            )}
+            {errorMsg && (
+              <div className="text-red-600 font-medium">
+                {errorMsg}
+              </div>
+            )}
             
             {/* Grid */}
             <div className="grid md:grid-cols-2 gap-6">
 
               {/* First Name */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="firstName" className="block text-sm font-medium mb-1">
                   First name <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="firstName"
                   name="firstName"
                   value={form.firstName}
                   onChange={handleChange}
@@ -85,10 +121,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Last Name */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="lastName" className="block text-sm font-medium mb-1">
                   Last name <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="lastName"
                   name="lastName"
                   value={form.lastName}
                   onChange={handleChange}
@@ -100,10 +137,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Job Title */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="jobTitle" className="block text-sm font-medium mb-1">
                   Current job title
                 </label>
                 <input
+                  id="jobTitle"
                   name="jobTitle"
                   value={form.jobTitle}
                   onChange={handleChange}
@@ -114,10 +152,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Company */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="company" className="block text-sm font-medium mb-1">
                   Company
                 </label>
                 <input
+                  id="company"
                   name="company"
                   value={form.company}
                   onChange={handleChange}
@@ -128,10 +167,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Country */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="country" className="block text-sm font-medium mb-1">
                   Country/region <span className="text-red-500">*</span>
                 </label>
                 <select
+                  id="country"
                   name="country"
                   value={form.country}
                   onChange={handleChange}
@@ -148,10 +188,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Category */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="category" className="block text-sm font-medium mb-1">
                   Professional category <span className="text-red-500">*</span>
                 </label>
                 <select
+                  id="category"
                   name="category"
                   value={form.category}
                   onChange={handleChange}
@@ -167,10 +208,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Email */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="email" className="block text-sm font-medium mb-1">
                   Email <span className="text-red-500">*</span>
                 </label>
                 <input
+                  id="email"
                   type="email"
                   name="email"
                   value={form.email}
@@ -183,14 +225,23 @@ const JoinCommunity: React.FC = () => {
 
               {/* Phone */}
               <div>
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="phone" className="block text-sm font-medium mb-1">
                   Phone
                 </label>
                 <div className="flex">
                   <span className="flex items-center px-3 border border-r-0 border-slate-300 rounded-l-lg bg-slate-100 text-sm">
-                    +234
+                    {(() => {
+                      const codes: Record<string, string> = {
+                        Nigeria: "+234",
+                        Ghana: "+233",
+                        Kenya: "+254",
+                        "South Africa": "+27",
+                      };
+                      return codes[form.country] || "";
+                    })()}
                   </span>
                   <input
+                    id="phone"
                     name="phone"
                     value={form.phone}
                     onChange={handleChange}
@@ -202,10 +253,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Experience */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="experience" className="block text-sm font-medium mb-1">
                   Sales experience
                 </label>
                 <select
+                  id="experience"
                   name="experience"
                   value={form.experience}
                   onChange={handleChange}
@@ -222,10 +274,11 @@ const JoinCommunity: React.FC = () => {
 
               {/* Goals */}
               <div className="md:col-span-2">
-                <label className="block text-sm font-medium mb-1">
+                <label htmlFor="goals" className="block text-sm font-medium mb-1">
                   How can SPI Africa support you?
                 </label>
                 <textarea
+                  id="goals"
                   name="goals"
                   value={form.goals}
                   onChange={handleChange}
@@ -251,9 +304,14 @@ const JoinCommunity: React.FC = () => {
                 </label>
                 <p className="mt-1">
                   We value your privacy. See our{" "}
-                  <span className="text-spi-primary underline cursor-pointer">
+                  <a
+                    href="/privacy"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-spi-primary underline cursor-pointer"
+                  >
                     Privacy Policy
-                  </span>.
+                  </a>.
                 </p>
               </div>
             </div>
@@ -262,9 +320,12 @@ const JoinCommunity: React.FC = () => {
             <div className="text-center pt-4">
               <button
                 type="submit"
-                className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-10 py-3 rounded-lg shadow-sm transition"
+                disabled={isSubmitting}
+                className={`bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-10 py-3 rounded-lg shadow-sm transition ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Submit
+                {isSubmitting ? 'Submitting…' : 'Submit'}
               </button>
             </div>
 

@@ -36,6 +36,10 @@ const StrategicPillars = () => {
   const maskRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<HTMLDivElement[]>([]);
 
+  // clear on each render so we don't keep stale refs from previous
+  // renders. callback ref below will repopulate the array.
+  itemsRef.current = [];
+
   useEffect(() => {
     const section = sectionRef.current;
     const mask = maskRef.current;
@@ -69,9 +73,10 @@ const StrategicPillars = () => {
       );
 
       // Stagger text sections as scroll progresses
-      items.forEach((item, i) => {
+      // only animate real elements
+      items.filter(Boolean).forEach((item, i) => {
         tl.fromTo(
-          item,
+          item as HTMLElement,
           { opacity: 0, y: 40 },
           {
             opacity: 1,
@@ -98,7 +103,7 @@ const StrategicPillars = () => {
           >
             <img
               src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
-              alt="SPI"
+              alt="Group of colleagues collaborating around a table"
               className="w-full h-full object-cover"
             />
           </div>
