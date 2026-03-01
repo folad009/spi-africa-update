@@ -1,66 +1,76 @@
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      console.log('Subscribing:', email);
-      setSubscribed(true);
-      setEmail('');
-      setTimeout(() => setSubscribed(false), 5000);
-    }
+    if (!email) return;
+    setSubscribed(true);
+    setEmail("");
+    setTimeout(() => setSubscribed(false), 4000);
   };
 
   return (
-    <footer className="bg-spi-primary text-white pt-20 overflow-hidden relative">
-      {/* Background Decorative Pattern */}
-      <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none" style={{ backgroundImage: 'radial-gradient(circle at 50% 50%, #ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
+    <footer className="relative bg-[#1e2f6e] text-white overflow-hidden">
+      {/* Background dotted pattern */}
+      <div
+        className="absolute inset-0 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, rgba(255,255,255,0.4) 1px, transparent 0)",
+          backgroundSize: "22px 22px",
+        }}
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
-        {/* Top Section: Brand & Newsletter */}
-        <div className="flex flex-col lg:flex-row justify-between items-start gap-12 pb-16">
-          <div className="lg:w-1/3">
-            <p className="text-white/70 text-lg leading-relaxed mb-8">
-              The leading professional body for sales practitioners in Africa. Advancing excellence, ethics, and education since 2018.
-            </p>
-            <div className="flex space-x-4">
-              {['Twitter', 'LinkedIn', 'Facebook', 'Instagram'].map((social) => (
-                <a key={social} href="#" className="w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-spi-teal hover:border-spi-teal transition-all duration-300">
-                  <span className="sr-only">{social}</span>
-                  <div className="w-4 h-4 bg-current rounded-sm"></div>
-                </a>
-              ))}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
+        {/* Top Row */}
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          
+          {/* Left: Brand + Description */}
+          <div className="max-w-sm">
+            <div className="mb-4">
+              <img
+                src="/logo-light.svg"
+                alt="SPI Africa"
+                className="h-10 mb-4"
+              />
             </div>
+
+            <p className="text-white/70 text-sm leading-relaxed">
+              The leading professional body for sales practitioners in Africa.
+              Advancing excellence, ethics, and education since 2018.
+            </p>
           </div>
 
-          <div className="lg:w-1/2 bg-white/5 rounded-3xl p-8 border border-white/10">
-            <h3 className="text-xl font-bold mb-2">Subscribe to our newsletter</h3>
-            <p className="text-white/60 mb-6">Get weekly insights on sales trends in the African market.</p>
-            
+          {/* Right: Newsletter */}
+          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 max-w-md lg:ml-auto">
+            <h4 className="font-semibold mb-1">
+              Subscribe to our newsletter
+            </h4>
+            <p className="text-white/60 text-sm mb-4">
+              Get weekly insights on sales trends in the African market.
+            </p>
+
             {subscribed ? (
-              <div className="bg-green-500/10 border border-green-500/20 text-green-400 p-4 rounded-xl flex items-center space-x-3">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"/></svg>
-                <span className="font-bold">Thanks for subscribing!</span>
+              <div className="text-green-300 text-sm font-medium">
+                Thanks for subscribing!
               </div>
             ) : (
-              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-                <input 
-                  type="email" 
+              <form onSubmit={handleSubscribe} className="flex gap-2">
+                <input
+                  type="email"
+                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
-                  required
-                  className="flex-grow bg-black/20 border border-white/10 text-white px-5 py-4 rounded-xl focus:outline-none focus:border-spi-teal transition-colors placeholder:text-white/30"
+                  className="flex-1 bg-black/20 border border-white/10 rounded-lg px-4 py-2 text-sm placeholder:text-white/40 focus:outline-none focus:border-yellow-400"
                 />
-                <button 
+                <button
                   type="submit"
-                  className="bg-spi-primary hover:bg-spi-secondary text-white px-8 py-4 rounded-xl font-bold transition-all shadow-lg active:scale-95 whitespace-nowrap"
+                  className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg hover:bg-yellow-300 transition"
                 >
                   Subscribe
                 </button>
@@ -69,18 +79,71 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom Section */}
-        <div className="pt-8 pb-12 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-white/40 text-sm">
-          <p>© {new Date().getFullYear()} Sales Professionals Institute Africa.</p>
+        {/* Links Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-16 text-sm">
+          
+          <div>
+            <h5 className="font-semibold mb-4 text-white/90">
+              About SPI Africa
+            </h5>
+            <ul className="space-y-2 text-white/60">
+              <li><Link to="#">Our Mission & Vision</Link></li>
+              <li><Link to="#">Leadership</Link></li>
+              <li><Link to="#">Strategic Pillars</Link></li>
+              <li><Link to="#">Governance & Transparency</Link></li>
+              <li><Link to="#">Code of Ethics</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-semibold mb-4 text-white/90">
+              Membership & Programs
+            </h5>
+            <ul className="space-y-2 text-white/60">
+              <li><Link to="#">Join the Community</Link></li>
+              <li><Link to="#">Certification Pathways</Link></li>
+              <li><Link to="#">Training & Development</Link></li>
+              <li><Link to="#">Corporate Partnerships</Link></li>
+              <li><Link to="#">Events & Conferences</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-semibold mb-4 text-white/90">
+              Resources
+            </h5>
+            <ul className="space-y-2 text-white/60">
+              <li><Link to="#">Insights & Publications</Link></li>
+              <li><Link to="#">Research & Industry Reports</Link></li>
+              <li><Link to="#">Blog</Link></li>
+              <li><Link to="#">Media & Press</Link></li>
+              <li><Link to="#">Careers</Link></li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 className="font-semibold mb-4 text-white/90">
+              Legal & Policies
+            </h5>
+            <ul className="space-y-2 text-white/60">
+              <li><Link to="#">Privacy Policy</Link></li>
+              <li><Link to="#">Data Protection Policy</Link></li>
+              <li><Link to="#">Terms of Use</Link></li>
+              <li><Link to="#">Cookie Policy</Link></li>
+              <li><Link to="#">Accessibility Statement</Link></li>
+              <li><Link to="#">Sitemap</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="border-t border-white/10 mt-14 pt-6 text-xs text-white/50 flex flex-col md:flex-row justify-between gap-4">
+          <p>
+            © {new Date().getFullYear()} Sales Professional Institute Africa |
+            Code of Ethics | Governance | Data Protection
+          </p>
           <p>Lagos - Nigeria</p>
         </div>
-      </div>
-      
-      {/* Large Typography Watermark */}
-      <div className="w-full overflow-hidden leading-none select-none pointer-events-none opacity-5">
-        <h1 className="text-[12rem] md:text-[20rem] font-black text-white text-center -mb-24 md:-mb-48 whitespace-nowrap">
-          SPI AFRICA
-        </h1>
       </div>
     </footer>
   );
