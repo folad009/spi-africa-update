@@ -12,7 +12,13 @@ type Props = {
   goTo: (i: number) => void;
 };
 
-const SliderControls: React.FC<Props> = ({ total, current, next, prev, goTo }) => {
+const SliderControls: React.FC<Props> = ({
+  total,
+  current,
+  next,
+  prev,
+  goTo,
+}) => {
   return (
     <div className="absolute bottom-10 left-0 right-0 z-20 flex justify-between max-w-7xl mx-auto px-4">
       <div className="flex space-x-3">
@@ -30,11 +36,7 @@ const SliderControls: React.FC<Props> = ({ total, current, next, prev, goTo }) =
       </div>
 
       <div className="hidden md:flex space-x-4">
-        <button
-          onClick={prev}
-          className="nav-btn"
-          aria-label="Previous slide"
-        >
+        <button onClick={prev} className="nav-btn" aria-label="Previous slide">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 text-white"
@@ -43,14 +45,15 @@ const SliderControls: React.FC<Props> = ({ total, current, next, prev, goTo }) =
             stroke="currentColor"
             aria-hidden="true"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </button>
-        <button
-          onClick={next}
-          className="nav-btn"
-          aria-label="Next slide"
-        >
+        <button onClick={next} className="nav-btn" aria-label="Next slide">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-5 w-5 text-white"
@@ -59,14 +62,18 @@ const SliderControls: React.FC<Props> = ({ total, current, next, prev, goTo }) =
             stroke="currentColor"
             aria-hidden="true"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </button>
       </div>
     </div>
   );
 };
-
 
 const HeroSlider: React.FC = () => {
   const { current, next, prev, goTo } = useAutoSlider(slides.length);
@@ -76,7 +83,7 @@ const HeroSlider: React.FC = () => {
     if (!textRef.current) return;
 
     const elements = textRef.current.querySelectorAll(
-      ".hero-title, .hero-subtitle, .hero-buttons"
+      ".hero-title, .hero-subtitle, .hero-buttons",
     );
 
     // create timeline so we can kill it in cleanup when `current` changes
@@ -90,7 +97,7 @@ const HeroSlider: React.FC = () => {
         duration: 0.8,
         stagger: 0.2,
         ease: "power3.out",
-      }
+      },
     );
 
     return () => {
@@ -115,6 +122,8 @@ const HeroSlider: React.FC = () => {
               transform: index === current ? "scale(1.1)" : "scale(1)",
             }}
           />
+
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/10" />
 
           {index === current && (
             <div className="absolute inset-0 flex items-center">
