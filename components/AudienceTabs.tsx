@@ -42,8 +42,10 @@ const AudienceTabs: React.FC = () => {
                   return (
                     <button
                       key={tab.key}
+                      id={`tab-${tab.key}`}
                       role="tab"
                       aria-selected={isActive}
+                      aria-controls={`panel-${tab.key}`}
                       onClick={() => setActiveTab(tab.key as TabKey)}
                       className={`
                         text-left px-6 py-4 font-semibold transition-all duration-200
@@ -63,7 +65,13 @@ const AudienceTabs: React.FC = () => {
             </div>
 
             {/* Panel */}
-            <div role="tabpanel" className="md:w-2/3">
+            <div
+              id={`panel-${activeTab}`}
+              role="tabpanel"
+              aria-labelledby={`tab-${activeTab}`}
+              tabIndex={0}
+              className="md:w-2/3"
+            >
               <div key={activeTab} className="space-y-8 animate-fade-in">
                 {content.map((item, index) => (
                   <div key={index}>

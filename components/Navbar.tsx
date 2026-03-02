@@ -1,15 +1,16 @@
-
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
 
   const navLinks = [
-    { name: 'HOME', path: '/' },
-    { name: 'ABOUT US', path: '/about' },
-    { name: 'CONTACT US', path: '/contact' },
+    { name: "HOME", path: "/" },
+    { name: "ABOUT US", path: "/about" },
+    { name: "PROGRAMS & CERTIFICATION", path: "/#" },
+    { name: "EVENTS", path: "/#" },
+    { name: "CONTACT US", path: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -20,7 +21,11 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between h-20">
           <div className="flex items-center">
             <Link to="/" className="flex space-x-2">
-              <img src="/images/spi-africa-main-logo.webp" alt="SPI Africa Logo" className="h-16 w-auto" />
+              <img
+                src="/images/spi-africa-main-logo.webp"
+                alt="SPI Africa Logo"
+                className="h-16 w-auto"
+              />
             </Link>
           </div>
 
@@ -31,7 +36,7 @@ const Navbar: React.FC = () => {
                 key={link.path}
                 to={link.path}
                 className={`text-sm font-medium transition-colors hover:text-spi-primary text-capitalize ${
-                  isActive(link.path) ? 'text-spi-primary' : 'text-slate-600'
+                  isActive(link.path) ? "text-spi-primary" : "text-slate-600"
                 }`}
               >
                 {link.name}
@@ -51,11 +56,26 @@ const Navbar: React.FC = () => {
               onClick={() => setIsOpen(!isOpen)}
               className="text-slate-600 hover:text-spi-primary p-2"
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg
+                className="h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
                 {isOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
                 ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
                 )}
               </svg>
             </button>
@@ -73,8 +93,8 @@ const Navbar: React.FC = () => {
               onClick={() => setIsOpen(false)}
               className={`block px-3 py-2 rounded-md text-base font-medium ${
                 isActive(link.path)
-                  ? 'bg-spi-primary/10 text-spi-primary'
-                  : 'text-slate-600 hover:bg-slate-50'
+                  ? "bg-spi-primary/10 text-spi-primary"
+                  : "text-slate-600 hover:bg-slate-50"
               }`}
             >
               {link.name}
