@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { Link } from "react-router-dom";
 import { useGsapReveal } from "../hooks/useGsapReveal";
 
 const JoinGlobalHero: React.FC = () => {
@@ -25,12 +26,18 @@ const JoinGlobalHero: React.FC = () => {
           </p>
 
           <div className="reveal flex gap-4">
-            <button className="bg-spi-secondary text-white px-6 py-3 rounded font-semibold">
-              Join SPE
-            </button>
-            <button className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold">
+            <Link
+              to="/community"
+              className="bg-spi-secondary text-white px-6 py-3 rounded font-semibold inline-block"
+            >
+              Join SPI
+            </Link>
+            <Link
+              to="/community"
+              className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold inline-block"
+            >
               Renew Membership
-            </button>
+            </Link>
           </div>
         </div>
 

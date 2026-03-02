@@ -13,10 +13,10 @@ export const useScrollReveal = (
     selector?: string;
   }
 ) => {
+  const { y = 50, duration = 0.8, stagger = 0.15, selector } = options || {};
+
   useEffect(() => {
     if (!ref.current) return;
-
-    const { y = 50, duration = 0.8, stagger = 0.15, selector } = options || {};
 
     const ctx = gsap.context(() => {
       const targets = selector
@@ -42,5 +42,5 @@ export const useScrollReveal = (
     }, ref);
 
     return () => ctx.revert();
-  }, [ref, options]);
+  }, [ref, y, duration, stagger, selector]);
 };

@@ -6,11 +6,11 @@ const Navbar: React.FC = () => {
   const location = useLocation();
 
   const navLinks = [
-    { name: "HOME", path: "/" },
-    { name: "ABOUT US", path: "/about" },
-    { name: "PROGRAMS & CERTIFICATION", path: "/#" },
-    { name: "EVENTS", path: "/#" },
-    { name: "CONTACT US", path: "/contact" },
+    { id: 1, name: "HOME", path: "/" },
+    { id: 2, name: "ABOUT US", path: "/about" },
+    { id: 3, name: "PROGRAMS & CERTIFICATION", path: "/programs" },
+    { id: 4, name: "EVENTS", path: "/events" },
+    { id: 5, name: "CONTACT US", path: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -33,7 +33,7 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <Link
-                key={link.path}
+                key={link.id}
                 to={link.path}
                 className={`text-sm font-medium transition-colors hover:text-spi-primary text-capitalize ${
                   isActive(link.path) ? "text-spi-primary" : "text-slate-600"
@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
         <div className="md:hidden bg-white border-b border-slate-200 py-4 px-4 space-y-2 animate-in slide-in-from-top duration-300">
           {navLinks.map((link) => (
             <Link
-              key={link.path}
+              key={link.id}
               to={link.path}
               onClick={() => setIsOpen(false)}
               className={`block px-3 py-2 rounded-md text-base font-medium ${

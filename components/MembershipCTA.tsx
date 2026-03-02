@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { useGsapReveal } from '../hooks/useGsapReveal';
 
 const MembershipCTA: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useGsapReveal(ref, {
     y: 20,
@@ -20,10 +20,18 @@ const MembershipCTA: React.FC = () => {
         </h3>
 
         <div className="flex gap-4">
-          <button className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold">
+          <button
+            type="button"
+            onClick={() => window.location.href = '/community'}
+            className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold hover:bg-yellow-300 transition"
+          >
             Join as Professional
           </button>
-          <button className="border border-white px-6 py-3 rounded font-semibold">
+          <button
+            type="button"
+            onClick={() => window.location.href = '/community'}
+            className="border border-white px-6 py-3 rounded font-semibold hover:bg-white/10 transition"
+          >
             Join as Student
           </button>
         </div>

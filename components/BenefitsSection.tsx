@@ -17,7 +17,7 @@ const benefits = [
 ];
 
 const BenefitsSection: React.FC = () => {
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLElement>(null);
 
   useGsapReveal(ref, {
     selector: ".benefit-card",

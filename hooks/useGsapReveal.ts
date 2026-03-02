@@ -14,16 +14,16 @@ export const useGsapReveal = (
     scale?: number;
   }
 ) => {
+  const {
+    selector,
+    y = 40,
+    duration = 0.8,
+    stagger = 0.15,
+    scale = 1,
+  } = options || {};
+
   useEffect(() => {
     if (!ref.current) return;
-
-    const {
-      selector,
-      y = 40,
-      duration = 0.8,
-      stagger = 0.15,
-      scale = 1,
-    } = options || {};
 
     const ctx = gsap.context(() => {
       const targets = selector
@@ -50,5 +50,5 @@ export const useGsapReveal = (
     }, ref);
 
     return () => ctx.revert();
-  }, [ref, options]);
+  }, [ref, selector, y, duration, stagger, scale]);
 };

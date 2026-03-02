@@ -42,9 +42,9 @@ const ZigZagRow: React.FC<ZigZagProps> = ({
       </div>
 
       <div className="w-full md:w-1/2 reveal">
-        <h3 className="text-spi-secondary font-bold uppercase tracking-wider mb-2">
+        <span className="text-spi-secondary font-bold uppercase tracking-wider mb-2 block">
           {eyebrow}
-        </h3>
+        </span>
         <h2 className="text-4xl font-bold text-spi-primary mb-6">{title}</h2>
         <p className="text-lg text-slate-600 mb-6 leading-relaxed">{text1}</p>
         <p className="text-lg text-slate-600 leading-relaxed">{text2}</p>
