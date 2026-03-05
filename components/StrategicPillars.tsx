@@ -102,7 +102,7 @@ const StrategicPillars = () => {
             style={{ clipPath: "inset(40% 40% 40% 40%)" }}
           >
             <img
-              src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=1200&q=80"
+              src="/images/spi-africa-banner-4.jpg"
               alt="Group of colleagues collaborating around a table"
               className="w-full h-full object-cover"
             />
