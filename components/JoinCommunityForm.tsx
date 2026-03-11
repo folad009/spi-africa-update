@@ -75,7 +75,7 @@ const JoinCommunity: React.FC = () => {
     "w-full border border-slate-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-spi-primary focus:border-spi-primary";
 
   return (
-    <section className="bg-slate-50 py-16">
+    <section className="bg-slate-50 py-16" id="communityform">
       <div className="max-w-4xl mx-auto px-4">
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-10">
           

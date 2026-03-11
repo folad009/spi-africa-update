@@ -26,19 +26,19 @@ const JoinGlobalHero: React.FC = () => {
           </p>
 
           <div className="reveal flex gap-4">
-            <Link
-              to="/"
+            <a
+              href="#communityform"
               className="bg-spi-secondary text-white px-6 py-3 rounded font-semibold inline-block"
             >
-              Join SPI
-            </Link>
+              Join SPI Africa
+            </a>
            
           </div>
         </div>
 
         <div className="reveal">
           <img
-            src="/images/join-global.jpg"
+            src="/images/spi-sales-professional.jpg"
             alt="Conference networking"
             className="rounded-xl shadow-xl w-full"
           />
