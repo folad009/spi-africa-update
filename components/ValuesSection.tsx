@@ -18,7 +18,7 @@ const ValuesSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <ValueCard
             title="Vision"
-            text="To become Africa’s leading body for sales excellence, shaping globally competitive sales professionals and organisations"
+            text="To become Africa's leading body for sales excellence, shaping globally competitive sales professionals and organisations."
           />
           <ValueCard
             title="Mission"
@@ -26,7 +26,7 @@ const ValuesSection = () => {
           />
           <ValueCard
             title="Purpose"
-            text="We exist to elevate the standards, structure, and recognition of the sales profession in Africa by developing capable professionals, strengthening commercial systems, and enabling organisations to achieve sustainable revenue growth"
+            text="We exist to elevate the standards, structure, and recognition of the sales profession in Africa by developing capable professionals, strengthening commercial systems, and enabling organisations to achieve sustainable revenue growth."
           />
         </div>
       </div>

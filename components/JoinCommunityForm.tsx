@@ -6,7 +6,7 @@ const categories = [
   "Mid-level Sales Professional",
   "Senior Sales Professional",
   "Commercial/Sales Leader",
-  "Director/C-suite Excutive",
+  "Director/C-suite Executive",
   "Commercial/Business Executive",
   "Entrepreneur/Business Owner",
 ];
@@ -268,7 +268,7 @@ const JoinCommunity: React.FC = () => {
                   <option>0 - 1 years</option>
                   <option>2 - 3 years</option>
                   <option>4 - 7 years</option>
-                  <option>8 - 12 years</option>
+                  <option>8 - 11 years</option>
                   <option>12 - 15 years</option>
                   <option>Greater than 15 years</option>
                 </select>

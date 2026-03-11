@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.id}
                 to={link.path}
-                className={`text-sm font-azo font-medium transition-colors hover:text-spi-primary text-capitalize ${
+                className={`text-sm font-azo font-medium transition-colors hover:text-spi-primary capitalize ${
                   isActive(link.path) ? "text-spi-primary" : "text-slate-600"
                 }`}
               >
@@ -91,7 +91,7 @@ const Navbar: React.FC = () => {
               key={link.id}
               to={link.path}
               onClick={() => setIsOpen(false)}
-              className={`block px-3 py-2 rounded-md text-base font-medium ${
+              className={`block px-3 py-2 rounded-md text-base font-azo font-medium ${
                 isActive(link.path)
                   ? "bg-spi-primary/10 text-spi-primary"
                   : "text-slate-600 hover:bg-slate-50"
@@ -101,7 +101,7 @@ const Navbar: React.FC = () => {
             </Link>
           ))}
           <Link
-            to="/contact"
+            to="/community"
             onClick={() => setIsOpen(false)}
             className="block w-full text-center bg-spi-primary text-white px-3 py-3 rounded-md text-base font-semibold"
           >

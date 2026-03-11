@@ -60,7 +60,7 @@ const StrategicPillars = () => {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="feature-card border-2 border-[#30447F] bg-white p-6 shadow-[6px_6px_0_0]"
+              className="feature-card border-2 border-[#30447F] bg-white p-6 shadow-[6px_6px_0_0_rgba(48,68,127,0.3)]"
             >
               <h3 className="text-lg font-semibold text-[#30447F]">
                 {feature.title}
