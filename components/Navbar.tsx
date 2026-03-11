@@ -22,9 +22,9 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/" className="flex space-x-2">
               <img
-                src="/images/spi-africa-main-logo.webp"
+                src="/images/spi-logo-2.png"
                 alt="SPI Africa Logo"
-                className="h-16 w-auto"
+                className="h-52 w-full"
               />
             </Link>
           </div>

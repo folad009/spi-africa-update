@@ -16,9 +16,9 @@ const Footer: React.FC = () => {
 
     try {
       setError(null);
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
       if (!res.ok) {
@@ -29,8 +29,8 @@ const Footer: React.FC = () => {
       setEmail("");
       setTimeout(() => setSubscribed(false), 4000);
     } catch (err) {
-      console.error('subscription error', err);
-      setError('Unable to subscribe at this time. Please try again later.');
+      console.error("subscription error", err);
+      setError("Unable to subscribe at this time. Please try again later.");
     }
   };
 
@@ -47,16 +47,16 @@ const Footer: React.FC = () => {
       />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        {/* Top Row */}
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          
-          {/* Left: Brand + Description */}
-          <div className="max-w-sm">
-            <div className="mb-4">
+       
+
+        {/* Links Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 text-sm">
+          <div>
+            <div>
               <img
-                src="/logo-light.svg"
+                src="/images/spi-logo-white.png"
                 alt="SPI Africa"
-                className="h-10 mb-4"
+                className="h-14 mb-2"
               />
             </div>
 
@@ -66,78 +66,65 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Right: Newsletter 
-          <div className="bg-white/5 border border-white/10 rounded-2xl p-6 max-w-md lg:ml-auto">
-            <h4 className="font-semibold mb-1">
-              Subscribe to our newsletter
-            </h4>
-            <p className="text-white/60 text-sm mb-4">
-              Get weekly insights on sales trends in the African market.
-            </p>
-
-            {subscribed ? (
-              <div className="text-green-300 text-sm font-medium">
-                Thanks for subscribing!
-              </div>
-            ) : (
-              <form onSubmit={handleSubscribe} className="flex gap-2">
-                <input
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="flex-1 bg-black/20 border border-white/10 rounded-lg px-4 py-2 text-sm placeholder:text-white/40 focus:outline-none focus:border-yellow-400"
-                />
-                <button
-                  type="submit"
-                  className="bg-yellow-400 text-black font-semibold px-4 py-2 rounded-lg hover:bg-yellow-300 transition"
-                >
-                  Subscribe
-                </button>
-              </form>
-            )}
-            {error && (
-              <div className="text-red-400 text-xs mt-2">
-                {error}
-              </div>
-            )}
-          </div>*/}
-        </div>
-
-        {/* Links Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mt-16 text-sm">
-          
-          <div>
-            <h5 className="font-semibold mb-4 text-white/90">
-              About SPI Africa
-            </h5>
-            <ul className="space-y-2 text-white/60">
-              <li><Link to="/about#mission" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Our Mission & Vision</Link></li>
-              <li><Link to="/about#leadership" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Leadership</Link></li>
-              <li><Link to="/about#pillars" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Strategic Pillars</Link></li>
-            </ul>
-          </div>
-
           <div>
             <h5 className="font-semibold mb-4 text-white/90">
               Membership & Programs
             </h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="/community" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Join the Community</Link></li>
-              <li><Link to="/training" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Capability Framework</Link></li>
-              <li><Link to="/contact" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Corporate Partnerships</Link></li>
-              <li><Link to="/events" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Events & Conferences</Link></li>
+              <li>
+                <Link
+                  to="/community"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Join the Community
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/training"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Capability Framework
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/contact"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Corporate Partnerships
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/events"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Events & Conferences
+                </Link>
+              </li>
             </ul>
           </div>
 
           <div>
-            <h5 className="font-semibold mb-4 text-white/90">
-              Resources
-            </h5>
+            <h5 className="font-semibold mb-4 text-white/90">Resources</h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="/research" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Research & Industry Reports</Link></li>
-              <li><Link to="/careers" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Careers</Link></li>
+              <li>
+                <Link
+                  to="/research"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Research & Industry Reports
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/careers"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Careers
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -146,10 +133,38 @@ const Footer: React.FC = () => {
               Legal & Policies
             </h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="/privacy" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Privacy Policy</Link></li>
-              <li><Link to="/terms" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Terms of Use</Link></li>
-              <li><Link to="/cookies" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Cookie Policy</Link></li>
-              <li><Link to="/sitemap" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Sitemap</Link></li>
+              <li>
+                <Link
+                  to="/privacy"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/terms"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Terms of Use
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/cookies"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Cookie Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/sitemap"
+                  className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300"
+                >
+                  Sitemap
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
@@ -157,7 +172,7 @@ const Footer: React.FC = () => {
         {/* Divider */}
         <div className="border-t border-white/10 mt-14 pt-6 text-xs text-white/50 flex flex-col md:flex-row justify-between gap-4">
           <p>
-            © {new Date().getFullYear()} Sales Professional Institute Africa 
+            © {new Date().getFullYear()} Sales Professional Institute Africa
           </p>
           <p>Lagos - Nigeria</p>
         </div>

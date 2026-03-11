@@ -21,7 +21,7 @@ const AudienceTabs: React.FC = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url(https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1600&q=80)",
+            "url(/images/spi-main-background.jpg)",
         }}
       />
 
