@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -32,97 +32,41 @@ const features = [
 ];
 
 const StrategicPillars = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const maskRef = useRef<HTMLDivElement>(null);
-  const itemsRef = useRef<HTMLDivElement[]>([]);
-
-  // clear on each render so we don't keep stale refs from previous
-  // renders. callback ref below will repopulate the array.
-  itemsRef.current = [];
+  const sectionRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    const section = sectionRef.current;
-    const mask = maskRef.current;
-    const items = itemsRef.current;
-
-    if (!section || !mask) return;
-
     const ctx = gsap.context(() => {
-      // Timeline controlled by scroll
-      const tl = gsap.timeline({
+      gsap.from(".feature-card", {
+        y: 40,
+        opacity: 0,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.15,
         scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "+=200%", // scroll distance
-          scrub: true,
-          pin: true,
+          trigger: sectionRef.current,
+          start: "top 80%",
         },
       });
-
-      // Image mask reveal
-      tl.fromTo(
-        mask,
-        {
-          clipPath: "inset(40% 40% 40% 40% round 20px)",
-        },
-        {
-          clipPath: "inset(0% 0% 0% 0% round 0px)",
-          ease: "none",
-        },
-        0
-      );
-
-      // Stagger text sections as scroll progresses
-      // only animate real elements
-      items.filter(Boolean).forEach((item, i) => {
-        tl.fromTo(
-          item as HTMLElement,
-          { opacity: 0, y: 40 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-          },
-          i * 0.4
-        );
-      });
-    }, section);
+    }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen bg-white overflow-hidden">
-      <div className="grid md:grid-cols-2 h-full">
-        {/* Image Side */}
-        <div className="relative flex items-center justify-center">
-          <div
-            ref={maskRef}
-            className="w-[95%] h-[95%] overflow-hidden"
-            style={{ clipPath: "inset(40% 40% 40% 40%)" }}
-          >
-            <img
-              src="/images/spi-africa-banner-4.jpg"
-              alt="Group of colleagues collaborating around a table"
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-
-        {/* Text Side */}
-        <div className="flex flex-col justify-center px-8 md:px-16 space-y-10">
+    <section ref={sectionRef} className="bg-[#5D9AD2]/20 py-24 px-6">
+      <h1 className="text-center pb-4 text-5xl font-bold text-[#30447F]"> Our Strategic Pillars</h1>
+      <div className="mx-auto max-w-6xl">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
             <div
               key={index}
-              ref={(el) => {
-                if (el) itemsRef.current[index] = el;
-              }}
-              className="opacity-0"
+              className="feature-card border-2 border-[#30447F] bg-white p-6 shadow-[6px_6px_0_0]"
             >
-              <h3 className="text-xl font-bold text-spi-primary">
+              <h3 className="text-lg font-semibold text-[#30447F]">
                 {feature.title}
               </h3>
-              <p className="text-slate-600 text-[14px] leading-relaxed">
+
+              <p className="mt-3 text-sm leading-relaxed text-gray-600">
                 {feature.text}
               </p>
             </div>

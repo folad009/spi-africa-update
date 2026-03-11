@@ -66,7 +66,7 @@ const Footer: React.FC = () => {
             </p>
           </div>
 
-          {/* Right: Newsletter */}
+          {/* Right: Newsletter 
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6 max-w-md lg:ml-auto">
             <h4 className="font-semibold mb-1">
               Subscribe to our newsletter
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
                 {error}
               </div>
             )}
-          </div>
+          </div>*/}
         </div>
 
         {/* Links Section */}
@@ -116,8 +116,6 @@ const Footer: React.FC = () => {
               <li><Link to="/about#mission" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Our Mission & Vision</Link></li>
               <li><Link to="/about#leadership" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Leadership</Link></li>
               <li><Link to="/about#pillars" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Strategic Pillars</Link></li>
-              <li><Link to="/about#governance" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Governance & Transparency</Link></li>
-              <li><Link to="/about#ethics" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Code of Ethics</Link></li>
             </ul>
           </div>
 
@@ -127,9 +125,8 @@ const Footer: React.FC = () => {
             </h5>
             <ul className="space-y-2 text-white/60">
               <li><Link to="/community" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Join the Community</Link></li>
-              <li><Link to="/certification" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Certification Pathways</Link></li>
-              <li><Link to="/training" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Training & Development</Link></li>
-              <li><Link to="/partners" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Corporate Partnerships</Link></li>
+              <li><Link to="/training" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Capability Framework</Link></li>
+              <li><Link to="/contact" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Corporate Partnerships</Link></li>
               <li><Link to="/events" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Events & Conferences</Link></li>
             </ul>
           </div>
@@ -139,10 +136,7 @@ const Footer: React.FC = () => {
               Resources
             </h5>
             <ul className="space-y-2 text-white/60">
-              <li><Link to="/insights" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Insights & Publications</Link></li>
               <li><Link to="/research" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Research & Industry Reports</Link></li>
-              <li><Link to="/blog" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Blog</Link></li>
-              <li><Link to="/press" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Media & Press</Link></li>
               <li><Link to="/careers" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Careers</Link></li>
             </ul>
           </div>
@@ -153,10 +147,8 @@ const Footer: React.FC = () => {
             </h5>
             <ul className="space-y-2 text-white/60">
               <li><Link to="/privacy" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Privacy Policy</Link></li>
-              <li><Link to="/data-protection" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Data Protection Policy</Link></li>
               <li><Link to="/terms" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Terms of Use</Link></li>
               <li><Link to="/cookies" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Cookie Policy</Link></li>
-              <li><Link to="/accessibility" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Accessibility Statement</Link></li>
               <li><Link to="/sitemap" className="hover:text-white focus:outline-none focus:ring-2 focus:ring-yellow-300">Sitemap</Link></li>
             </ul>
           </div>
@@ -165,8 +157,7 @@ const Footer: React.FC = () => {
         {/* Divider */}
         <div className="border-t border-white/10 mt-14 pt-6 text-xs text-white/50 flex flex-col md:flex-row justify-between gap-4">
           <p>
-            © {new Date().getFullYear()} Sales Professional Institute Africa |
-            Code of Ethics | Governance | Data Protection
+            © {new Date().getFullYear()} Sales Professional Institute Africa 
           </p>
           <p>Lagos - Nigeria</p>
         </div>

@@ -1,8 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { pillars } from "../data/pillarsData";
-import PillarCard from "./PillarCard";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,7 +29,7 @@ const PillarsSection: React.FC = () => {
             start: "top 80%",
             once: true,
           },
-        }
+        },
       );
     }, section);
 
@@ -39,16 +37,32 @@ const PillarsSection: React.FC = () => {
   }, []);
 
   return (
-    <section className="py-24 bg-slate-50">
+    <section className="bg-slate-50 lg:grid lg:place-content-center">
       <div
         ref={sectionRef}
-        className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8"
+        className="mx-auto w-screen max-w-7xl  px-4 py-16 sm:px-6 sm:py-24 lg:px-8 lg:py-20"
       >
-        {pillars.map((pillar, index) => (
-          <div key={index} className="pillar-card">
-            <PillarCard {...pillar} />
+        <div className="mx-auto text-center">
+          <h1 className="text-4xl font-bold text-[#30447F] sm:text-5xl font-azo">
+            Who We Are
+          </h1>
+          <p className="mt-4 text-base text-pretty text-gray-700 sm:text-lg/relaxed font-azo">
+            SPI Africa exists to elevate the standards and recognition of the
+            sales profession across Africa through ethical practice,
+            certification, and capability development. We are building a
+            credible pan-African community of sales and commercial leaders to
+            strengthen organisations and drive sustainable growth. Our ambition
+            is to become Africa’s leading body for sales excellence.
+          </p>
+          <div className="mt-4 flex justify-center gap-4 sm:mt-6">
+            <a
+              href="/about-us"
+              className="inline-block rounded bg-[#30447F] px-5 py-3 font-medium text-white shadow-sm transition-colors hover:bg-[#5D9AD2] font-azo"
+            >
+              Learn More
+            </a>
           </div>
-        ))}
+        </div>
       </div>
     </section>
   );

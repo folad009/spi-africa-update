@@ -28,9 +28,14 @@ const AudienceTabs: React.FC = () => {
       {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-spi-primary/90 via-spi-primary/80 to-spi-primary/60" />
 
+       
       {/* Content Layer */}
       <div className="relative z-10 max-w-6xl mx-auto px-4">
+         <h1 className="text-4xl font-bold text-white sm:text-5xl text-center pb-5">
+             Why SPI Africa
+          </h1>
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-12">
+        
           <div className="flex flex-col md:flex-row gap-10">
             
             {/* Tabs */}

@@ -1,55 +1,112 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SPI Africa - Sales Professionals Institute</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        .bg-pattern {
-            background-image: radial-gradient(circle at 2px 2px, rgba(15, 103, 92, 0.05) 1px, transparent 0);
-            background-size: 24px 24px;
-        }
+      @font-face {
+        font-family: "Azo Sans";
+        src: url("/fonts/AzoSans-Regular.woff2") format("woff2");
+        font-weight: 400;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Azo Sans";
+        src: url("/fonts/AzoSans-Medium.woff2") format("woff2");
+        font-weight: 500;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: "Azo Sans";
+        src: url("/fonts/AzoSans-Bold.woff2") format("woff2");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      body {
+        font-family: "Azo Sans", sans-serif;
+      }
+      .bg-pattern {
+        background-image: radial-gradient(
+          circle at 2px 2px,
+          rgba(15, 103, 92, 0.05) 1px,
+          transparent 0
+        );
+        background-size: 24px 24px;
+      }
+      .pillars-section {
+        position: relative;
+        height: 10vh;
+        overflow: hidden;
+      }
+
+      .pillars-track {
+        display: flex;
+        height: 100%;
+      }
+
+      .pillar-card {
+        min-width: 10vw;
+        height: 50vh;
+
+        padding: 0px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        font-size: 1.2rem;
+      }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@18.3.1",
-    "react/": "https://esm.sh/react@18.3.1/",
-    "react-dom": "https://esm.sh/react-dom@18.3.1",
-    "react-dom/": "https://esm.sh/react-dom@18.3.1/",
-    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom",
-    "gsap": "https://esm.sh/gsap@3.12.5"
-  }
-}
-</script>
-<script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            'spi-teal': '#0f675c',       // Primary
-            'spi-teal-light': '#158c81', // Secondary/Hover
-            'spi-gold': '#fad712',       // Accent
-            'spi-brown': '#734631',      // Dark/Text
-            'spi-primary': '#354E98',
-            'spi-secondary': '#62abe2',
-          }
+    <script type="importmap">
+      {
+        "imports": {
+          "react": "https://esm.sh/react@18.3.1",
+          "react/": "https://esm.sh/react@18.3.1/",
+          "react-dom": "https://esm.sh/react-dom@18.3.1",
+          "react-dom/": "https://esm.sh/react-dom@18.3.1/",
+          "react-router-dom": "https://esm.sh/react-router-dom@6.22.3?external=react,react-dom",
+          "gsap": "https://esm.sh/gsap@3.12.5"
         }
       }
-    }
-</script>
-<link rel="stylesheet" href="/index.css">
-</head>
-<body class="bg-slate-50 text-slate-800 overflow-x-hidden">
+    </script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "spi-teal": "#0f675c", // Primary
+              "spi-teal-light": "#158c81", // Secondary/Hover
+              "spi-gold": "#fad712", // Accent
+              "spi-brown": "#734631", // Dark/Text
+              "spi-primary": "#354E98",
+              "spi-secondary": "#62abe2",
+            },
+            fontFamily: {
+              azo: ['"Azo Sans"', "sans-serif"],
+              inter: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="/index.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-800 overflow-x-hidden">
     <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
-</body>
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>

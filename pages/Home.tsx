@@ -3,6 +3,8 @@ import PillarsSection from "../components/PillarsSection";
 import FinalCTA from "../components/FinalCTA";
 import StrategicPillars from "@/components/StrategicPillars";
 import AudienceTabs from "@/components/AudienceTabs";
+import FeaturedProgram from "@/components/FeaturedProgram";
+import LaunchingSoon from "@/components/LaunchingSoon";
 
 const Home = () => {
   return (
@@ -11,6 +13,8 @@ const Home = () => {
       <PillarsSection />
       <StrategicPillars />
       <AudienceTabs />
+      <FeaturedProgram />
+      <LaunchingSoon />
       <FinalCTA />
 
     </div>

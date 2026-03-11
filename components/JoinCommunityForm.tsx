@@ -5,7 +5,8 @@ const categories = [
   "Early-Career Sales Professional",
   "Mid-level Sales Professional",
   "Senior Sales Professional",
-  "Sales Leader/Manager",
+  "Commercial/Sales Leader",
+  "Director/C-suite Excutive",
   "Commercial/Business Executive",
   "Entrepreneur/Business Owner",
 ];
@@ -264,11 +265,12 @@ const JoinCommunity: React.FC = () => {
                   className={inputClass}
                 >
                   <option value="">Select your sales experience</option>
-                  <option>0–1 years</option>
-                  <option>2–3 years</option>
-                  <option>4–7 years</option>
-                  <option>8–12 years</option>
-                  <option>12+ years</option>
+                  <option>0 - 1 years</option>
+                  <option>2 - 3 years</option>
+                  <option>4 - 7 years</option>
+                  <option>8 - 12 years</option>
+                  <option>12 - 15 years</option>
+                  <option>Greater than 15 years</option>
                 </select>
               </div>
 

@@ -54,7 +54,6 @@ const Contact: React.FC = () => {
           
           {/* Contact Info */}
           <div ref={infoRef} className="opacity-0">
-            <h1 className="text-5xl font-extrabold text-spi-secondary mb-8 leading-tight">Join the <span className="text-spi-primary">Movement</span></h1>
             <p className="text-xl text-slate-600 mb-12 max-w-md leading-relaxed">
               We welcome individuals and organizations who want to raise the bar of the sales profession in Africa. Reach out to us today.
             </p>
@@ -77,6 +76,17 @@ const Contact: React.FC = () => {
                 <div>
                   <h3 className="font-bold text-spi-primary mb-1">Email Us</h3>
                   <p className="text-slate-600">info@spi-africa.org</p>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-6 p-6 bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-spi-primary/10 text-spi-primary rounded-xl flex items-center justify-center shrink-0">
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div>
+                  <h3 className="font-bold text-spi-primary mb-1">Call us today</h3>
+                  <p className="text-slate-600">08112151795</p>
+                  <p className="text-slate-600">09038863747</p>
                 </div>
               </div>
 
@@ -145,10 +155,16 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     className="w-full px-5 py-4 bg-slate-50 border border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-spi-teal transition-all"
                   >
+                    <option>Professional Membership</option>
+                    <option>Training & Development Programmes</option>
+                    <option>Certification & Accreditation</option>
+                    <option>Events & Conferences</option>
+                    <option>Talent Pool & Job Match</option>
+                    <option>Route-to-Market Advisory</option>
+                    <option>Corporate Sales Training (For My Organisation)</option>
+                    <option>Technology & AI Enablement</option>
+                    <option>Partnerships / Collaboration</option>
                     <option>General Inquiry</option>
-                    <option>Membership</option>
-                    <option>Corporate Training</option>
-                    <option>Academic Partnership</option>
                   </select>
                 </div>
                 

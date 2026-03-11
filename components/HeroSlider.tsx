@@ -129,17 +129,14 @@ const HeroSlider: React.FC = () => {
             <div className="absolute inset-0 flex items-center">
               <div className="max-w-7xl mx-auto px-4 w-full">
                 <div ref={textRef} className="max-w-3xl text-white">
-                  <h1 className="hero-title text-5xl font-extrabold mb-6">
+                  <h1 className="hero-title text-5xl font-extrabold mb-6 font-azo">
                     {slide.title}
                   </h1>
-                  <p className="hero-subtitle text-xl mb-10">
+                  <p className="hero-subtitle text-xl mb-10 font-light">
                     {slide.subtitle}
                   </p>
                   <div className="hero-buttons space-x-4">
-                    <Link to="/contact" className="btn-primary">
-                      Start Your Journey
-                    </Link>
-                    <Link to="/about" className="btn-outline">
+                    <Link to="/about" className="bg-blue-950 p-5 rounded-[20px] font-azo">
                       {slide.cta}
                     </Link>
                   </div>

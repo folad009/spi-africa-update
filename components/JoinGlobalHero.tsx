@@ -27,17 +27,12 @@ const JoinGlobalHero: React.FC = () => {
 
           <div className="reveal flex gap-4">
             <Link
-              to="/community"
+              to="/"
               className="bg-spi-secondary text-white px-6 py-3 rounded font-semibold inline-block"
             >
               Join SPI
             </Link>
-            <Link
-              to="/community"
-              className="bg-yellow-400 text-black px-6 py-3 rounded font-semibold inline-block"
-            >
-              Renew Membership
-            </Link>
+           
           </div>
         </div>
 
