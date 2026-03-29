@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
+import { COUNTRIES } from "../data/countries";
 
 const categories = [
   "Student/Graduate",
@@ -17,7 +18,7 @@ const JoinCommunity: React.FC = () => {
     lastName: "",
     jobTitle: "",
     company: "",
-    country: "Nigeria",
+    country: "",
     category: "",
     email: "",
     phone: "",
@@ -28,6 +29,10 @@ const JoinCommunity: React.FC = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+
+  const countryDialCode = useMemo(() => {
+    return COUNTRIES.find((c) => c.name === form.country)?.dialCode ?? "";
+  }, [form.country]);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -179,11 +184,12 @@ const JoinCommunity: React.FC = () => {
                   required
                   className={inputClass}
                 >
-                  <option>Nigeria</option>
-                  <option>Ghana</option>
-                  <option>Kenya</option>
-                  <option>South Africa</option>
-                  <option>Other</option>
+                  <option value="">Select your country</option>
+                  {COUNTRIES.map((c) => (
+                    <option key={c.name} value={c.name}>
+                      {c.name}
+                    </option>
+                  ))}
                 </select>
               </div>
 
@@ -230,16 +236,8 @@ const JoinCommunity: React.FC = () => {
                   Phone
                 </label>
                 <div className="flex">
-                  <span className="flex items-center px-3 border border-r-0 border-slate-300 rounded-l-lg bg-slate-100 text-sm">
-                    {(() => {
-                      const codes: Record<string, string> = {
-                        Nigeria: "+234",
-                        Ghana: "+233",
-                        Kenya: "+254",
-                        "South Africa": "+27",
-                      };
-                      return codes[form.country] || "";
-                    })()}
+                  <span className="flex min-w-[4.5rem] shrink-0 items-center justify-center border border-r-0 border-slate-300 rounded-l-lg bg-slate-100 px-2 text-sm tabular-nums">
+                    {countryDialCode || "—"}
                   </span>
                   <input
                     id="phone"

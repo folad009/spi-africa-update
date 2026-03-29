@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const FeaturedProgram = () => {
   return (
@@ -19,9 +20,12 @@ const FeaturedProgram = () => {
             <p className="mb-8 text-zinc-600 lg:text-lg">
                 Take the survey and add your voice in shaping the future of sales in Nigeria
             </p>
-            <a href="/programs" className="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-[#30447F] text-white hover:bg-[#5D9AD2] h-10 px-4 py-2">
+            <Link
+              to="/programs"
+              className="inline-flex h-10 items-center justify-center whitespace-nowrap rounded-md bg-[#30447F] px-4 py-2 text-sm font-medium text-white ring-offset-background transition-colors hover:bg-[#5D9AD2] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50"
+            >
               Learn More
-            </a>
+            </Link>
           </div>
         </div>
       </div>
